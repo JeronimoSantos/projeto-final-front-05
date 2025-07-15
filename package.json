@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/JeronimoSantos/projeto-final-front-05#readme",
   "devDependencies": {
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^24.0.14",
     "@types/react": "^19.1.8",
     "autoprefixer": "^10.4.21",
