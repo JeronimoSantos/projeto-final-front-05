@@ -1,5 +1,5 @@
 import Navigation from "./Navigation";
-import { ModeToggle } from "./ThemeSwitcher";
+import { ModeToggle } from "./ModeToggle";
 
 export default function Header() {
   return (

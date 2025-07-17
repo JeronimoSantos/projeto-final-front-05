@@ -3,7 +3,7 @@
 import { CarouselNoticias } from "@/components/CarouselNoticias";
 import { CarouselCuriosidades } from "@/components/CarouselCuriosidades";
 import Navigation from "@/components/Navigation";
-import { ModeToggle }  from '@/components/ThemeSwitcher';
+import { ModeToggle }  from '@/components/ModeToggle';
 export default function HomePage() {
   return (
     <>
@@ -13,9 +13,12 @@ export default function HomePage() {
           <Navigation />
         </header>
 
-        <section className="flex gap-10 justify-around items-center mt-15 p-24 shadow-2xl">
-          <h3 className="text-7xl font-extrabold text-emerald-600 dark:text-blue-200 uppercase text-center">Mercado de Trabalho Inclusivo para PCDs</h3>
-          <img src={"/imgNoticias/logo-pcd.jpeg"} className="w-94 h-94 object-cover rounded-full"/>
+        <section className="flex flex-row gap-10 justify-around items-center mt-15 p-24 shadow-2xl">
+          <section className="flex flex-col gap-2">
+            <h2 className="text-8xl font-extrabold text-emerald-700 dark:text-blue-300 uppercase text-center">IncluiVaga</h2>
+            <h3 className="text-7xl font-extrabold text-emerald-600 dark:text-blue-200 uppercase text-center">Mercado de Trabalho Inclusivo para PCDs</h3>
+          </section>
+            <img src={"/imgNoticias/logo-pcd.jpeg"} className="w-94 h-94 object-cover rounded-full"/>
         </section>
 
         <section className="flex justify-around items-center gap-15 mt-28 p-10">
