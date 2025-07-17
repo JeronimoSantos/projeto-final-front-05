@@ -25,11 +25,11 @@ function CriarCandidatura({ onNovaCandidatura }: { onNovaCandidatura: (nova: Can
     setErro("");
 
     try {
-      const response = await api.post("/candidaturas", {
-        usuarioId: Number(usuarioId),
-        vagaId: Number(vagaId),
-        status,
-      });
+      const response = await api.post<Candidatura>("/candidaturas", {
+      usuarioId: Number(usuarioId),
+      vagaId: Number(vagaId),
+      status
+    });
       onNovaCandidatura(response.data as Candidatura) ;
       setUsuarioId("");
       setVagaId("");
