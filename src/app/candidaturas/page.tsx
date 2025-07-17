@@ -96,7 +96,7 @@ export default function Candidaturas() {
   useEffect(() => {
     async function fetchCandidaturas() {
       try {
-        const response = await api.get("/candidaturas");
+        const response = await api.get<Candidatura[]>("/candidaturas");;
         setCandidaturas(response.data);
       } catch (error) {
         console.error("Erro ao buscar candidaturas:", error);
