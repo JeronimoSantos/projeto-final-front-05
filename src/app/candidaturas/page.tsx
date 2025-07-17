@@ -30,7 +30,7 @@ function CriarCandidatura({ onNovaCandidatura }: { onNovaCandidatura: (nova: Can
         vagaId: Number(vagaId),
         status,
       });
-      onNovaCandidatura(response.data);
+      onNovaCandidatura(response.data as Candidatura) ;
       setUsuarioId("");
       setVagaId("");
       setStatus("pendente");
