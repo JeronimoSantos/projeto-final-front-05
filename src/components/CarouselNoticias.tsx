@@ -27,7 +27,7 @@ const imagensNoticias: ImagensNoticiasProps[] = [
     { src: "/imgNoticias/office-pcd.png", alt: "Imagem 6", description: "Empregabilidade de PcDs cresce em Santa Catarina", url:"https://estado.sc.gov.br/noticias/cresce-a-empregabilidade-da-pessoa-com-deficiencia-no-mercado-de-trabalho-formal-em-santa-catarina/"}
 ]
 
-export function CarouselDemo() {
+export function CarouselNoticias() {
   return (
     <Carousel className="w-full max-w-xs">
       <CarouselContent>
@@ -36,7 +36,7 @@ export function CarouselDemo() {
             <div className="p-1">
               <Card className="bg-gray-500 dark:bg-gray-800">
                 <CardContent className="flex flex-col aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold ">
+                  <span className="text-4xl font-semibold">
                     <img
                     src={img.src}
                     alt={img.alt}
@@ -44,7 +44,7 @@ export function CarouselDemo() {
                     className="w-full h-full object-cover rounded-2xl"
                   /></span>
                   <p className="mt-3 text-center">{img.description}</p>
-                  <Link href={img.url} target="_blank" rel="noopener noreferrer" className="hover:bg-indigo-600 hover:underline  bg-indigo-700 dark:bg-amber-800 dark:hover:bg-amber-700 p-2 rounded-2xl text-center mt-2.5 ease-in-out duration-300">Saiba mais</Link>
+                  <Link href={img.url} target="_blank" rel="noopener noreferrer" className="hover:bg-emerald-500 hover:underline  bg-emerald-600 dark:bg-blue-600 dark:hover:bg-blue-500 p-2 rounded-2xl text-center mt-2.5 ease-in-out duration-300">Saiba mais</Link>
                 </CardContent>
               </Card>
             </div>

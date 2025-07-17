@@ -18,7 +18,7 @@ export default function Navigation() {
                     <Link href="/candidaturas" target="_self" title="Candidaturas" className="text-emerald-400 dark:text-blue-100 font-mono hover:underline">Candidaturas</Link>
                 </li>
                 <li>
-                    <Link href="/empresas" target="_self" title="Vagas" className="text-emerald-400 dark:text-blue-100 font-mono hover:underline">Vagas</Link>
+                    <Link href="/empresas" target="_self" title="Vagas" className="text-emerald-400 dark:text-blue-100 font-mono hover:underline">Empresas</Link>
                 </li>
                 <li>
                     <Link href="/contato" target="_self" title="Contato" className="text-emerald-400 dark:text-blue-100 font-mono hover:underline">Contato</Link>
