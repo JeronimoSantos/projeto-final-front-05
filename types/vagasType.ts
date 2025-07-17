@@ -8,3 +8,4 @@ export interface Vaga {
   salario: number;
   empresarioId: number
 }
+
