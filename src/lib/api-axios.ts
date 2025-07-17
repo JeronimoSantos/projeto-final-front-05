@@ -1,9 +1,6 @@
-// Cliente Axios global
+// lib/api-axios.ts
 import axios from "axios";
 
- export const api = axios.create({
-    baseURL: process.env.KEY_API ||  "http://localhost:3000/vagas",
-    headers: {
-        "Content-Type": "application/json",
-    }
-})
+export const api = axios.create({
+  baseURL: "https://projeto-final-api-05.onrender.com", // ou a URL base correta da sua API
+});

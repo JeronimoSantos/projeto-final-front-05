@@ -5,6 +5,8 @@ import { CarouselCuriosidades } from "@/components/CarouselCuriosidades";
 import Navigation from "@/components/Navigation";
 import { ModeToggle }  from '@/components/ModeToggle';
 export default function HomePage() {
+
+  
   return (
     <>
       <main className="flex flex-col min-h-screen bg-gradient-to-tr from-green-300 via-gray-400 to-gray-500 dark:bg-gradient-to-tr dark:from-gray-500 dark:via-gray-700 dark:to-gray-800  p-3.5 scroll-smooth">
