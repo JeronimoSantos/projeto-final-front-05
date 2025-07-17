@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/components/ThemeSwitcher";
 import Navigation from "../../components/Navigation";
 
 export default function PageCanditatures() {
@@ -5,6 +6,7 @@ export default function PageCanditatures() {
         <>
             <h1>Canditaturas</h1>
             <Navigation />
+            <ModeToggle />
         </>
     )
 }
