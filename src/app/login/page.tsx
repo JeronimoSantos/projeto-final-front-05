@@ -21,13 +21,21 @@ export default function Login() {
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
 
+  interface LoginResponse {
+    token: string;
+  }
+
   async function handleLogin(event: React.FormEvent) {
     event.preventDefault();
     setMensagem("");
     setErro("");
 
     try {
-      const response = await api.post("/auth/login", { email, senha });
+      const response = await api.post<LoginResponse>("/auth/login", {
+        email,
+        senha,
+      });
+
       const token = response.data.token;
 
       if (token) {
