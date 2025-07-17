@@ -18,7 +18,7 @@ export default function HomePage() {
             <h2 className="text-8xl font-extrabold text-emerald-700 dark:text-blue-300 uppercase text-center">IncluiVaga</h2>
             <h3 className="text-7xl font-extrabold text-emerald-600 dark:text-blue-200 uppercase text-center">Mercado de Trabalho Inclusivo para PCDs</h3>
           </section>
-            <img src={"/imgNoticias/logo-pcd.jpeg"} className="w-94 h-94 object-cover rounded-full"/>
+            <img src={"/imgNoticias/logo-IncluiVaga4.png"} className="w-94 h-94 object-cover rounded-full"/>
         </section>
 
         <section className="flex justify-around items-center gap-15 mt-28 p-10">
