@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import Header from "@/components/Header";
-import { api } from "@/lib/api-axios";
+import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
+import Alert from "@/components/Alert";
 
 export default function Login() {
   const router = useRouter();
+  const { login, register } = useAuth();
   const [modo, setModo] = useState<"login" | "registro">("login");
 
   // Login
@@ -21,30 +23,15 @@ export default function Login() {
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
 
-  interface LoginResponse {
-    token: string;
-  }
-
   async function handleLogin(event: React.FormEvent) {
     event.preventDefault();
     setMensagem("");
     setErro("");
 
     try {
-      const response = await api.post<LoginResponse>("/auth/login", {
-        email,
-        senha,
-      });
-
-      const token = response.data.token;
-
-      if (token) {
-        localStorage.setItem("token", token);
-        setMensagem("Login realizado com sucesso!");
-        router.push("/vagas");
-      } else {
-        setErro("Token não recebido.");
-      }
+      await login(email, senha);
+      setMensagem("Login realizado com sucesso!");
+      router.push("/vagas");
     } catch (error: any) {
       console.error("Erro no login:", error);
       setErro("Email ou senha incorretos.");
@@ -57,7 +44,7 @@ export default function Login() {
     setErro("");
 
     try {
-      const response = await api.post("/usuarios", {
+      await register({
         nome,
         email,
         senha,
@@ -181,8 +168,20 @@ export default function Login() {
             )}
           </p>
 
-          {mensagem && <p className="text-green-600 mt-4">{mensagem}</p>}
-          {erro && <p className="text-red-500 mt-4">{erro}</p>}
+          {mensagem && (
+            <Alert 
+              type="success" 
+              message={mensagem} 
+              onClose={() => setMensagem("")}
+            />
+          )}
+          {erro && (
+            <Alert 
+              type="error" 
+              message={erro} 
+              onClose={() => setErro("")}
+            />
+          )}
         </form>
       </main>
     </>

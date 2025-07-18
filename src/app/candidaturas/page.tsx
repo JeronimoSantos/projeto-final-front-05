@@ -3,6 +3,8 @@
 import Header from "@/components/Header";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api-axios";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface Candidatura {
   id: number;
@@ -13,7 +15,7 @@ interface Candidatura {
 }
 
 function CriarCandidatura({ onNovaCandidatura }: { onNovaCandidatura: (nova: Candidatura) => void }) {
-  const [usuarioId, setUsuarioId] = useState("");
+  const { user } = useAuth();
   const [vagaId, setVagaId] = useState("");
   const [status, setStatus] = useState("pendente");
   const [loading, setLoading] = useState(false);
@@ -26,12 +28,11 @@ function CriarCandidatura({ onNovaCandidatura }: { onNovaCandidatura: (nova: Can
 
     try {
       const response = await api.post<Candidatura>("/candidaturas", {
-      usuarioId: Number(usuarioId),
-      vagaId: Number(vagaId),
-      status
-    });
-      onNovaCandidatura(response.data as Candidatura) ;
-      setUsuarioId("");
+        usuarioId: user?.id,
+        vagaId: Number(vagaId),
+        status
+      });
+      onNovaCandidatura(response.data as Candidatura);
       setVagaId("");
       setStatus("pendente");
     } catch (error) {
@@ -45,16 +46,6 @@ function CriarCandidatura({ onNovaCandidatura }: { onNovaCandidatura: (nova: Can
   return (
     <form onSubmit={handleSubmit} className="space-y-4 p-4 bg-gray-100 rounded shadow mb-8 max-w-md">
       <h2 className="text-2xl font-bold mb-4">Nova Candidatura</h2>
-      <div>
-        <label className="block mb-1 font-semibold">Usuário ID:</label>
-        <input
-          type="number"
-          value={usuarioId}
-          onChange={e => setUsuarioId(e.target.value)}
-          required
-          className="w-full border p-2 rounded"
-        />
-      </div>
       <div>
         <label className="block mb-1 font-semibold">Vaga ID:</label>
         <input
@@ -96,7 +87,7 @@ export default function Candidaturas() {
   useEffect(() => {
     async function fetchCandidaturas() {
       try {
-        const response = await api.get<Candidatura[]>("/candidaturas");;
+        const response = await api.get<Candidatura[]>("/candidaturas");
         setCandidaturas(response.data);
       } catch (error) {
         console.error("Erro ao buscar candidaturas:", error);
@@ -135,7 +126,7 @@ export default function Candidaturas() {
   }
 
   return (
-    <>
+    <ProtectedRoute>
       <Header />
       <main className="flex flex-col min-h-screen p-48 bg-gradient-to-tr from-green-300 via-gray-400 to-gray-500 dark:bg-gradient-to-tr dark:from-gray-500 dark:via-gray-700 dark:to-gray-800 scroll-smooth">
         <h3 className="text-6xl font-extrabold text-emerald-600 dark:text-blue-200 uppercase hover:underline mb-12">
@@ -184,6 +175,6 @@ export default function Candidaturas() {
           </div>
         )}
       </main>
-    </>
+    </ProtectedRoute>
   );
 }

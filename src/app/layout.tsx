@@ -1,23 +1,26 @@
-import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { AuthProvider } from "@/contexts/AuthContext";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dark Mode App",
-  description: "Exemplo com Next.js e Tailwind",
+  title: "IncluiVaga - Inclusão e Oportunidades",
+  description: "Plataforma de vagas inclusivas para PCDs",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="theme">
+    <html lang="pt-BR">
+      <body className={inter.className}>
+        <AuthProvider>
           {children}
-        </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
